@@ -39,7 +39,7 @@ class Album
       SELECT * FROM albums
       WHERE artist_id = $1;
     "
-    values = [artist] #or artist.id?
+    values = [artist.id] #or artist.id?
     result_array = SqlRunner.run(sql, values)
     albums_list = result_array.map { |album| Album.new(album) }
     album_titles = albums_list.map { |album| album.title }
