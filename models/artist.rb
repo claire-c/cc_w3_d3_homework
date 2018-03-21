@@ -24,8 +24,13 @@ class Artist
     @id = result_array[0]['id']
   end
 
-  
-
+  def self.list_all_artists()
+    sql = "SELECT * FROM artists;"
+    result_array = SqlRunner.run(sql)
+    list = result_array.map { |artist| Artist.new(artist) }
+    artists_list = list.map { |artist| artist.name }
+    return artists_list
+  end
 
 
 
