@@ -45,9 +45,19 @@ class Artist
         WHERE id = ($2);
     "
     values = [@name, @id]
+    binding.pry
     SqlRunner.run(sql, values)
   end
 #running an error I can't understand at all!
+
+
+# /Users/cconnachan/codeclan/e20/workfiles/week_03/day_3/music_library_lab_hw/db/sql_runner.rb:7:in `prepare': ERROR:  source for a multiple-column UPDATE item must be a sub-SELECT or ROW() expression (PG::FeatureNotSupported)
+# LINE 3:         SET (name) = ($1)
+#                               ^
+# 	from /Users/cconnachan/codeclan/e20/workfiles/week_03/day_3/music_library_lab_hw/db/sql_runner.rb:7:in `run'
+# 	from /Users/cconnachan/codeclan/e20/workfiles/week_03/day_3/music_library_lab_hw/models/artist.rb:48:in `update_artist'
+
+
 
 
   def self.find_artist(id)
