@@ -34,7 +34,17 @@ class Album
     return albums_list
   end
 
-
+  def self.list_albums_by_artist(artist)
+    sql = "
+      SELECT * FROM albums
+      WHERE artist_id = $1;
+    "
+    values = [artist] #or artist.id?
+    result_array = SqlRunner.run(sql, values)
+    albums_list = result_array.map { |album| Album.new(album) }
+    album_titles = albums_list.map { |album| album.title }
+  end
+#artist is the artist object passed in from the runner file. I need to pass in the ID as the value to SQL.
 
 
 end
