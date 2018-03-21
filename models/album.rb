@@ -65,5 +65,9 @@ class Album
     return artist_objs[0].name
   end
 
+  def self.delete_all_albums()
+    sql = "DELETE FROM albums;"
+    SqlRunner.run(sql)
+  end
 
 end
