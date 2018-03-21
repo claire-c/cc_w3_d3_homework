@@ -45,13 +45,24 @@ class Album
     album_titles = albums_list.map { |album| album.title }
   end
 
-  def get_artist_id()
-    sql = "SELECT artist_id FROM albums WHERE title = $1 LIMIT 1;"
-    values = [@title]
+  # def get_artist_id()
+  #   sql = "SELECT artist_id FROM albums WHERE title = $1 LIMIT 1;"
+  #   values = [@title]
+  #   result_array = SqlRunner.run(sql, values)
+  #   artist_id = result_array.map { |artist| artist }
+  #   binding.pry
+  #   return artist_id[0]['artist_id']
+  # end
+
+  def get_artist_name()
+    sql = "
+      SELECT * FROM artists
+      WHERE id = $1;
+    "
+    values = [@artist_id]
     result_array = SqlRunner.run(sql, values)
-    artist_id = result_array.map { |artist| artist }
-    binding.pry
-    return artist_id[0]['artist_id']
+    artist_objs = result_array.map { |artist| Artist.new(artist) }
+    return artist_objs[0].name
   end
 
 

@@ -40,7 +40,7 @@ thriller.save_album_to_db()
 
 #p Album.list_albums_by_artist(michael)
 
-p thriller.get_artist_id()
-
+#p thriller.get_artist_id()
+p thriller.get_artist_name()
 
 # Show an album's artist
