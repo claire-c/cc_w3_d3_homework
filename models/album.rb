@@ -44,7 +44,15 @@ class Album
     albums_list = result_array.map { |album| Album.new(album) }
     album_titles = albums_list.map { |album| album.title }
   end
-#artist is the artist object passed in from the runner file. I need to pass in the ID as the value to SQL.
+
+  def get_artist_id()
+    sql = "SELECT artist_id FROM albums WHERE title = $1 LIMIT 1;"
+    values = [@title]
+    result_array = SqlRunner.run(sql, values)
+    artist_id = result_array.map { |artist| artist }
+    binding.pry
+    return artist_id[0]['artist_id']
+  end
 
 
 end

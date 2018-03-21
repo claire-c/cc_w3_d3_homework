@@ -38,15 +38,9 @@ thriller.save_album_to_db()
 #p Album.list_all_albums()
 #p Artist.list_all_artists()
 
-p Album.list_albums_by_artist(michael)
+#p Album.list_albums_by_artist(michael)
+
+p thriller.get_artist_id()
 
 
-
-
-
-
-
-
-
-# List all the albums they have by an artist
 # Show an album's artist
