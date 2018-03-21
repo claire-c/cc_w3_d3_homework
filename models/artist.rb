@@ -38,15 +38,29 @@ class Artist
     SqlRunner.run(sql)
   end
 
-  def update_artist()
+  # def update_artist()
+  #   sql = "
+  #     UPDATE artists
+  #       SET (name) = ($1)
+  #       WHERE id = ($2);
+  #   "
+  #   values = [@name, @id]
+  #   SqlRunner.run(sql, values)
+  # end
+
+  def self.find_artist(id)
+    string_id = id.to_s
     sql = "
-      UPDATE artists
-        SET (name) = ($1)
-        WHERE id = $2;
-    "
-    values = [@name, @id]
-    SqlRunner.run(sql, values)
+    SELECT * FROM artists
+      WHERE id = $1;"
+
+    values = [string_id]
+    result_array = SqlRunner.run(sql, values)
+    artist_objs = result_array.map { |artist| Artist.new(artist) }
+    return artist_objs[0].name
   end
+
+# Find Artists/Albums by their ID
 
 
 
