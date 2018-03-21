@@ -35,8 +35,8 @@ require_relative('db/sql_runner.rb')
 # album_hash4 = { 'title' => 'Dry', 'genre' => 'rock', 'artist_id' => pj.id}
 # dry = Album.new(album_hash4)
 # dry.save_album_to_db()
-
-p Artist.list_all_artists()
-# List All Artists/Albums
+p Album.list_all_albums()
+#p Artist.list_all_artists()
+# List All Albums
 # List all the albums they have by an artist
 # Show an album's artist
