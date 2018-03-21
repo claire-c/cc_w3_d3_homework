@@ -38,15 +38,17 @@ class Artist
     SqlRunner.run(sql)
   end
 
-  # def update_artist()
-  #   sql = "
-  #     UPDATE artists
-  #       SET (name) = ($1)
-  #       WHERE id = ($2);
-  #   "
-  #   values = [@name, @id]
-  #   SqlRunner.run(sql, values)
-  # end
+  def update_artist()
+    sql = "
+      UPDATE artists
+        SET (name) = ($1)
+        WHERE id = ($2);
+    "
+    values = [@name, @id]
+    SqlRunner.run(sql, values)
+  end
+#running an error I can't understand at all!
+
 
   def self.find_artist(id)
     string_id = id.to_s

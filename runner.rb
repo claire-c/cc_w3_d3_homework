@@ -56,4 +56,4 @@ require_relative('db/sql_runner.rb')
 # pj.name = 'Polly Jean Harvey'
 # pj.update_artist()
 
-p Album.find_album(105)
+#p Album.find_album(105)
