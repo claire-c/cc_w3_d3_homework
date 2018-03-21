@@ -4,7 +4,8 @@ require_relative('../db/sql_runner.rb')
 
 class Album
 
-  attr_reader :id, :title, :genre, :artist_id
+  attr_reader :id, :artist_id
+  attr_accessor :title, :genre
 
   def initialize(album_hash)
     @title = album_hash['title']
@@ -68,6 +69,16 @@ class Album
   def self.delete_all_albums()
     sql = "DELETE FROM albums;"
     SqlRunner.run(sql)
+  end
+
+  def update_album()
+    sql = "
+      UPDATE albums
+        SET (title, genre, artist_id) = ($1, $2, $3)
+        WHERE id = ($4);
+    "
+    values = [@title, @genre, @artist_id, @id]
+    SqlRunner.run(sql, values)
   end
 
 end
